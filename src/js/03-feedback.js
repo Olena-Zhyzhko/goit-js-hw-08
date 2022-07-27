@@ -20,7 +20,7 @@ form.addEventListener("submit", onSabmitForm);
 function getInput(event) {
     const email = event.currentTarget.elements.email.value;
     const message = event.currentTarget.elements.message.value;
-    console.log(email, message);
+    // console.log(email, message);
 
     const inputValue = {
         email,
