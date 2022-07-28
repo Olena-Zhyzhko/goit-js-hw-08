@@ -13,7 +13,6 @@ form.addEventListener("submit", onSabmitForm);
 function getInput(event) {
     const email = form.elements.email.value;
     const message = form.elements.message.value;
-    console.log(email, message);
 
     const inputValue = {
         email,
@@ -25,7 +24,7 @@ function getInput(event) {
 
 
 function saveFormValue(inputValueEl) {
-localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(inputValueEl));
+    localStorage.setItem(LOCALSTORAGE_KEY, JSON.stringify(inputValueEl));
 }
 
 function updauteInput() {
@@ -37,7 +36,6 @@ function updauteInput() {
     }
 
     parsedValue = JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY));
-    // console.log(parsedValue);
     
     autoCompleteValue(parsedValue);
 }
@@ -49,14 +47,17 @@ function autoCompleteValue(valueEl) {
 
 function onSabmitForm(event, parsedValue) {
     event.preventDefault();
-        // getFeedback(getInput);
-    console.log(JSON.parse(localStorage.getItem(LOCALSTORAGE_KEY)));
-    // console.log(parsedValue);
+    const formData = {email: form.elements.email.value, message: form.elements.message.value,};
+    console.log(formData);
     clinerLocStor();
-}
+    clinerFormElements();
+};
 
 function clinerLocStor() {
-    localStorage.removeItem(LOCALSTORAGE_KEY);
+    localStorage.removeItem(LOCALSTORAGE_KEY); 
+}
+
+function clinerFormElements() {
     form.elements.email.value = "";
     form.elements.message.value = "";
 }
